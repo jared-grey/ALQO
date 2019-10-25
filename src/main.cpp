@@ -1814,8 +1814,10 @@ int64_t GetBlockValue(int nHeight)
     }
 	
 	if (nHeight == 0) return 100001 * COIN;
+	if (nHeight == 1000000) return 15000000 * COIN;
 		
 	int64_t nSubsidy = 1 * COIN;
+	
 	
 	if(nHeight <= 86400 && nHeight > 0) {
         nSubsidy = 200 * COIN;
@@ -1852,6 +1854,8 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
     }
 	
 	int64_t ret = 0;
+	
+	if(nHeight == 1000000) return ret;
 	
 	if(nHeight <= 86400 && nHeight > 0) {
         ret = blockValue / 100 * 20;
@@ -2849,10 +2853,12 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         nExpectedMint += nFees;
 
     //Check that the block does not overmint
-    if (!IsBlockValueValid(block, nExpectedMint, pindex->nMint)) {
-        return state.DoS(100, error("ConnectBlock() : reward pays too much (actual=%s vs limit=%s)",
+    if(pindex->nHeight != 999999 && pindex->nHeight != 1000000) { //Preventing the block from getting sorted out
+        if (!IsBlockValueValid(block, nExpectedMint, pindex->nMint)) {
+            return state.DoS(100, error("ConnectBlock() : reward pays too much (actual=%s vs limit=%s)",
                                     FormatMoney(pindex->nMint), FormatMoney(nExpectedMint)),
-                         REJECT_INVALID, "bad-cb-amount");
+                             REJECT_INVALID, "bad-cb-amount");
+        }
     }
 
     // Ensure that accumulator checkpoints are valid and in the same state as this instance of the chain

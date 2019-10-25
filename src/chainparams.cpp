@@ -1,7 +1,8 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers// Copyright (c) 2017-2019 The ALQO & Bitfineon developers
+// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2017-2019 The ALQO & Bitfineon developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -141,18 +142,18 @@ public:
         /** Height or Time Based Activations **/
         nLastPOWBlock = 409000;
         nModifierUpdateBlock = 615800;
-        nZerocoinStartHeight = 1000000;
-        nZerocoinStartTime = 1577836800;
+        nZerocoinStartHeight = 100000000;
+        nZerocoinStartTime = 1640995200;
         nBlockEnforceSerialRange = 1000000; //Enforce serial range starting this block
-        nBlockRecalculateAccumulators = 1000000; //Trigger a recalculation of accumulators
+        nBlockRecalculateAccumulators = 10000000; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 1000000; //First block that bad serials emerged
         nBlockLastGoodCheckpoint = 1000000; //Last valid accumulator checkpoint
         nBlockEnforceInvalidUTXO = 1000000; //Start enforcing the invalid UTXO's
         nInvalidAmountFiltered = 0*COIN; //Amount of invalid coins filtered through exchanges, that should be considered valid
-        nBlockZerocoinV2 = 1000000; //!> The block that zerocoin v2 becomes active - roughly Tuesday, May 8, 2018 4:00:00 AM GMT
+        nBlockZerocoinV2 = 100000000; //!> The block that zerocoin v2 becomes active - roughly Tuesday, May 8, 2018 4:00:00 AM GMT
 		
-        nEnforceNewSporkKey = 1525158000; //!> Sporks signed after (GMT): Tuesday, May 1, 2018 7:00:00 AM GMT must use the new spork key
-        nRejectOldSporkKey = 1527811200; //!> Fully reject old spork key after (GMT): Friday, June 1, 2018 12:00:00 AM
+        nEnforceNewSporkKey = 1571414378; //!> Sporks signed after (GMT): Tuesday, May 1, 2018 7:00:00 AM GMT must use the new spork key
+        nRejectOldSporkKey = 1572566400; //!> Fully reject old spork key after (GMT): Friday, June 1, 2018 12:00:00 AM
 
         const char* pszTimestamp = "30th October 2017 - ALQO - The day you'll remember.";
         CMutableTransaction txNew;
@@ -2202,7 +2203,7 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "049e53e687fdafd78fd42d730fad0e7ea1819396176a2cb85d7a76fa4559cdbd2c2f05330a6f5cbadb44a6c1d324f167e679e9f3e95d9d5649761a3e7f59bf4500";
+        strSporkKey = "044672b760e773ca1623a780228d5219abf0a6a4ef776f1ba2ca5d149e1170a26f09394786c3f2301958f7c1acd4979adfde287987e9994d68e7632076cf5dc9b7";
         strSporkKeyOld = "049e53e687fdafd78fd42d730fad0e7ea1819396176a2cb85d7a76fa4559cdbd2c2f05330a6f5cbadb44a6c1d324f167e679e9f3e95d9d5649761a3e7f59bf4500";
         strObfuscationPoolDummyAddress = "AcmpqXViWUXNroqVNYRdKjKrFM6PNa1oTM";
         nStartMasternodePayments = 1510272000; //11/10/2017 @ 12:00am (UTC)
